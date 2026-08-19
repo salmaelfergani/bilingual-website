@@ -23,3 +23,12 @@ perfect, now let's expand the cards section to 30 cards/boxes total instead of 3
 
 ## 8
 Okay perfect, would you mind doing a final check for any errors
+
+## 9
+The site isn't mobile-optimized, please review and fix the layout so it displays properly on small screen widths (cards, language toggle, text sizing, spacing) everything should adapt cleanly to mobile
+
+## 10
+Please retry, check that the downloads folder is accessible now and confirm the mobile fixes are all saved correctly.
+
+## 11
+yes please commit

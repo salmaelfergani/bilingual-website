@@ -18,7 +18,7 @@ const TRANSLATIONS = {
     "hero.ctaSecondary": "Learn more",
 
     "features.heading": "What's included",
-    "features.subheading": "Thirty cards, each with a different hover effect. Hover to see them.",
+    "features.subheading": "Thirty cards, each with a different hover effect.",
     "features.c1.title": "Lift",
     "features.c1.body": "Rises on hover with a soft shadow.",
     "features.c2.title": "Sink",
@@ -125,7 +125,7 @@ const TRANSLATIONS = {
     "hero.ctaSecondary": "اعرف المزيد",
 
     "features.heading": "ما الذي تتضمنه",
-    "features.subheading": "ثلاثون بطاقة، لكل منها تأثير تمرير مختلف. مرّر المؤشر لتراها.",
+    "features.subheading": "ثلاثون بطاقة، لكل منها تأثير تمرير مختلف.",
     "features.c1.title": "ارتفاع",
     "features.c1.body": "ترتفع البطاقة مع ظل ناعم.",
     "features.c2.title": "انخفاض",
