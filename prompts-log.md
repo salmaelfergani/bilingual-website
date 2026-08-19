@@ -35,3 +35,9 @@ yes please commit
 
 ## 12
 please push to github now
+
+## 13
+on mobile, since hover doesn't apply, I want tapping a card to trigger its effect instead. The effect should play once per tap (not get stuck on), similar to how hover works on desktop
+
+## 14
+yes please commit and push

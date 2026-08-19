@@ -85,6 +85,64 @@
         event.preventDefault();
       });
     }
+
+    initTapEffects();
+  }
+
+  /**
+   * On a touch screen there is no hover, so a tap plays the card's effect
+   * once: .fx-on goes on, and comes back off a beat later so the card
+   * settles instead of latching — the same in-and-out a pointer gives.
+   */
+  function initTapEffects() {
+    var HOLD_MS = 900; // outlasts the 0.6s bounce and the 1.1s pulse cycle
+    var cards = document.querySelector(".cards");
+    if (!cards) return;
+
+    var touch = window.matchMedia("(hover: none)");
+    var active = null;
+    var timer = null;
+
+    function release() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      if (active) {
+        active.classList.remove("fx-on");
+        active = null;
+      }
+    }
+
+    cards.addEventListener("click", function (event) {
+      if (!touch.matches) return; // a real pointer is present; :hover handles it
+
+      var card = event.target.closest(".card");
+      if (!card) return;
+
+      release();
+      // Reflow between removing and re-adding the class, so tapping the same
+      // card twice replays its animation instead of being a no-op.
+      void card.offsetWidth;
+
+      card.classList.add("fx-on");
+      active = card;
+      timer = setTimeout(release, HOLD_MS);
+    });
+
+    // Attaching a mouse mid-session hands control back to :hover.
+    if (touch.addEventListener) {
+      touch.addEventListener("change", release);
+    } else if (touch.addListener) {
+      touch.addListener(release); // older Safari
+    }
+
+    // Browsers throttle timers in a backgrounded tab, so a card tapped just
+    // before the user switched away would still be lit on their return.
+    // Drop the effect on the way out instead of waiting for the timer.
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) release();
+    });
   }
 
   if (document.readyState === "loading") {

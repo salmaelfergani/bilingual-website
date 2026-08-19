@@ -576,6 +576,150 @@ html[dir="rtl"] .fx-underline::after { transform-origin: right; }
   }
 }
 
+/* Touch devices have no hover, so app.js adds .fx-on for one beat when a
+   card is tapped. These are the same effects, driven by that class. */
+@media (hover: none) {
+
+  /* 1 — lift */
+  .fx-lift.fx-on {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  /* 2 — sink */
+  .fx-sink.fx-on {
+    transform: translateY(4px);
+    box-shadow: inset 0 3px 12px rgba(0, 0, 0, 0.55);
+  }
+
+  /* 3 — scale */
+  .fx-scale.fx-on { transform: scale(1.06); border-color: var(--accent); }
+
+  /* 4 — tilt */
+  .fx-tilt.fx-on {
+    transform: rotate(calc(2deg * var(--dir)));
+    border-color: var(--accent);
+  }
+
+  /* 5 — glow */
+  .fx-glow.fx-on {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft), 0 0 26px rgba(110, 168, 254, 0.35);
+  }
+
+  /* 6 — fill */
+  .fx-fill.fx-on { background: var(--accent); border-color: var(--accent); }
+  .fx-fill.fx-on h3,
+  .fx-fill.fx-on p { color: var(--accent-text); }
+  .fx-fill.fx-on .card-icon {
+    background: rgba(0, 0, 0, 0.16);
+    color: var(--accent-text);
+  }
+  .fx-sweep.fx-on::before { opacity: 1; }
+  .fx-shine.fx-on { border-color: var(--accent); }
+  .fx-shine.fx-on::after { inset-inline-start: 110%; }
+  .fx-underline.fx-on::after { transform: scaleX(1); }
+
+  /* 10 — icon spin */
+  .fx-spin.fx-on { border-color: var(--accent); }
+  .fx-spin.fx-on .card-icon { transform: rotate(360deg); }
+
+  /* 11 — icon bounce */
+  .fx-bounce.fx-on { border-color: var(--accent); }
+  .fx-bounce.fx-on .card-icon { animation: fx-bounce 0.6s ease; }
+
+  /* 12 — skew */
+  .fx-skew.fx-on {
+    transform: skewX(calc(-4deg * var(--dir)));
+    border-color: var(--accent);
+  }
+
+  /* 13 — icon flip */
+  .fx-flip.fx-on { border-color: var(--accent); }
+  .fx-flip.fx-on .card-icon { transform: rotateY(180deg); }
+  .fx-gradient.fx-on { border-color: var(--accent); }
+  .fx-gradient.fx-on::before { opacity: 1; }
+
+  /* 15 — content slide */
+  .fx-slide.fx-on { border-color: var(--accent); }
+  .fx-slide.fx-on .card-icon,
+  .fx-slide.fx-on h3,
+  .fx-slide.fx-on p { transform: translateX(calc(9px * var(--dir))); }
+
+  /* 16 — radius morph */
+  .fx-morph.fx-on {
+    border-radius: 34px 6px 34px 6px;
+    border-color: var(--accent);
+  }
+
+  /* 17 — offset outline */
+  .fx-outline.fx-on { outline-color: var(--accent); outline-offset: 6px; }
+
+  /* 18 — deep shadow */
+  .fx-shadow.fx-on { box-shadow: 0 22px 45px -12px rgba(0, 0, 0, 0.75); }
+
+  /* 19 — invert */
+  .fx-invert.fx-on { background: var(--text); border-color: var(--text); }
+  .fx-invert.fx-on h3,
+  .fx-invert.fx-on p { color: var(--bg); }
+  .fx-invert.fx-on .card-icon { background: var(--bg); color: var(--text); }
+
+  /* 20 — icon zoom */
+  .fx-zoomicon.fx-on { border-color: var(--accent); }
+  .fx-zoomicon.fx-on .card-icon {
+    transform: scale(1.35);
+    background: var(--accent);
+    color: var(--accent-text);
+  }
+  .fx-ripple.fx-on { border-color: var(--accent); }
+  .fx-ripple.fx-on::before {
+    transform: translate(calc(-50% * var(--dir)), -50%) scale(60);
+  }
+
+  /* 22 — reveal a hidden line */
+  .fx-reveal.fx-on { border-color: var(--accent); }
+  .fx-reveal.fx-on .card-more {
+    max-height: 4em;
+    opacity: 1;
+    margin-block-start: 10px;
+  }
+
+  /* 23 — letter spacing.
+     Arabic is cursive, so letter-spacing would break the joins —
+     widen the gaps between words instead. */
+  .fx-spacing.fx-on { border-color: var(--accent); }
+  html[lang="en"] .fx-spacing.fx-on h3 { letter-spacing: 0.14em; }
+  html[lang="ar"] .fx-spacing.fx-on h3 { word-spacing: 0.45em; }
+  .fx-saturate.fx-on { border-color: var(--accent); }
+  .fx-saturate.fx-on .card-icon { filter: grayscale(0); }
+
+  /* 25 — 3D push */
+  .fx-push3d.fx-on {
+    transform: perspective(700px) rotateX(7deg);
+    border-color: var(--accent);
+  }
+  .fx-dashed.fx-on { border-style: solid; border-color: var(--accent); }
+  .fx-edgebar.fx-on::before { transform: scaleY(1); }
+
+  /* 28 — pulse */
+  .fx-pulse.fx-on {
+    border-color: var(--accent);
+    animation: fx-pulse 1.1s ease-in-out 1;
+  }
+
+  /* 29 — wobble */
+  .fx-wobble.fx-on { animation: fx-wobble 0.55s ease; }
+
+  /* 30 — pop */
+  .fx-pop.fx-on {
+    transform: translateY(-8px) scale(1.05);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft), 0 18px 36px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
 /* About */
 .about-grid {
   display: grid;
