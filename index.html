@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">Placeholder Co — Practice Project</title>
+
+  <!--
+    Applied before paint so an Arabic visitor never sees a flash of
+    English/LTR while the rest of the page loads.
+  -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("lang"); } catch (e) {}
+      var lang = saved === "ar" || saved === "en" ? saved : "en";
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" data-i18n="nav.brand">Placeholder Co</a>
+
+      <nav class="nav" aria-label="Main">
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- Both languages are always visible; the active one is highlighted. -->
+      <button
+        id="lang-toggle"
+        class="lang-toggle"
+        type="button"
+        data-i18n-attr="aria-label:nav.langToggleAria"
+        aria-label="Switch to Arabic"
+      >
+        <span class="lang-opt lang-opt-en">English</span>
+        <span class="lang-divider" aria-hidden="true"></span>
+        <span class="lang-opt lang-opt-ar">عربي</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Practice Project</p>
+        <h1 data-i18n="hero.title">A single page, in two languages.</h1>
+        <p class="lede" data-i18n="hero.subtitle">
+          This is placeholder text for a demo site. Use the button in the top
+          corner to switch the entire page between English and Arabic.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact" data-i18n="hero.ctaPrimary">Get started</a>
+          <a class="btn btn-ghost" href="#about" data-i18n="hero.ctaSecondary">Learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <h2 class="section-title" data-i18n="features.heading">What's included</h2>
+        <p class="section-sub" data-i18n="features.subheading">
+          Three placeholder cards to show the layout mirroring.
+        </p>
+
+        <div class="cards">
+          <article class="card fx-lift">
+            <div class="card-icon" aria-hidden="true">↑</div>
+            <h3 data-i18n="features.c1.title">Lift</h3>
+            <p data-i18n="features.c1.body">Rises on hover with a soft shadow.</p>
+          </article>
+          <article class="card fx-sink">
+            <div class="card-icon" aria-hidden="true">↓</div>
+            <h3 data-i18n="features.c2.title">Sink</h3>
+            <p data-i18n="features.c2.body">Presses down slightly, like a button.</p>
+          </article>
+          <article class="card fx-scale">
+            <div class="card-icon" aria-hidden="true">⤢</div>
+            <h3 data-i18n="features.c3.title">Scale</h3>
+            <p data-i18n="features.c3.body">Grows evenly out from the centre.</p>
+          </article>
+          <article class="card fx-tilt">
+            <div class="card-icon" aria-hidden="true">◪</div>
+            <h3 data-i18n="features.c4.title">Tilt</h3>
+            <p data-i18n="features.c4.body">Rotates a couple of degrees.</p>
+          </article>
+          <article class="card fx-glow">
+            <div class="card-icon" aria-hidden="true">◉</div>
+            <h3 data-i18n="features.c5.title">Glow</h3>
+            <p data-i18n="features.c5.body">An accent ring blooms around the edge.</p>
+          </article>
+          <article class="card fx-fill">
+            <div class="card-icon" aria-hidden="true">▩</div>
+            <h3 data-i18n="features.c6.title">Fill</h3>
+            <p data-i18n="features.c6.body">The background fades to the accent colour.</p>
+          </article>
+          <article class="card fx-sweep">
+            <div class="card-icon" aria-hidden="true">▤</div>
+            <h3 data-i18n="features.c7.title">Border sweep</h3>
+            <p data-i18n="features.c7.body">A lit gradient runs around the border.</p>
+          </article>
+          <article class="card fx-shine">
+            <div class="card-icon" aria-hidden="true">✧</div>
+            <h3 data-i18n="features.c8.title">Shine</h3>
+            <p data-i18n="features.c8.body">A diagonal highlight passes across.</p>
+          </article>
+          <article class="card fx-underline">
+            <div class="card-icon" aria-hidden="true">▁</div>
+            <h3 data-i18n="features.c9.title">Underline</h3>
+            <p data-i18n="features.c9.body">A bar grows out from the start edge.</p>
+          </article>
+          <article class="card fx-spin">
+            <div class="card-icon" aria-hidden="true">↻</div>
+            <h3 data-i18n="features.c10.title">Icon spin</h3>
+            <p data-i18n="features.c10.body">The icon turns a full circle.</p>
+          </article>
+          <article class="card fx-bounce">
+            <div class="card-icon" aria-hidden="true">⇅</div>
+            <h3 data-i18n="features.c11.title">Icon bounce</h3>
+            <p data-i18n="features.c11.body">The icon hops once and settles.</p>
+          </article>
+          <article class="card fx-skew">
+            <div class="card-icon" aria-hidden="true">⧫</div>
+            <h3 data-i18n="features.c12.title">Skew</h3>
+            <p data-i18n="features.c12.body">Leans over as if pushed from the side.</p>
+          </article>
+          <article class="card fx-flip">
+            <div class="card-icon" aria-hidden="true">⇄</div>
+            <h3 data-i18n="features.c13.title">Icon flip</h3>
+            <p data-i18n="features.c13.body">The icon turns over on its axis.</p>
+          </article>
+          <article class="card fx-gradient">
+            <div class="card-icon" aria-hidden="true">◨</div>
+            <h3 data-i18n="features.c14.title">Gradient</h3>
+            <p data-i18n="features.c14.body">A soft gradient slides in behind the text.</p>
+          </article>
+          <article class="card fx-slide">
+            <div class="card-icon" aria-hidden="true">➜</div>
+            <h3 data-i18n="features.c15.title">Content slide</h3>
+            <p data-i18n="features.c15.body">The contents shift toward the end edge.</p>
+          </article>
+          <article class="card fx-morph">
+            <div class="card-icon" aria-hidden="true">⬒</div>
+            <h3 data-i18n="features.c16.title">Radius morph</h3>
+            <p data-i18n="features.c16.body">The corners reshape themselves.</p>
+          </article>
+          <article class="card fx-outline">
+            <div class="card-icon" aria-hidden="true">⬚</div>
+            <h3 data-i18n="features.c17.title">Outline</h3>
+            <p data-i18n="features.c17.body">An offset outline steps outward.</p>
+          </article>
+          <article class="card fx-shadow">
+            <div class="card-icon" aria-hidden="true">◍</div>
+            <h3 data-i18n="features.c18.title">Deep shadow</h3>
+            <p data-i18n="features.c18.body">A wide, soft shadow spreads underneath.</p>
+          </article>
+          <article class="card fx-invert">
+            <div class="card-icon" aria-hidden="true">◐</div>
+            <h3 data-i18n="features.c19.title">Invert</h3>
+            <p data-i18n="features.c19.body">Foreground and background swap places.</p>
+          </article>
+          <article class="card fx-zoomicon">
+            <div class="card-icon" aria-hidden="true">⊕</div>
+            <h3 data-i18n="features.c20.title">Icon zoom</h3>
+            <p data-i18n="features.c20.body">Only the icon scales up and fills in.</p>
+          </article>
+          <article class="card fx-ripple">
+            <div class="card-icon" aria-hidden="true">◌</div>
+            <h3 data-i18n="features.c21.title">Ripple</h3>
+            <p data-i18n="features.c21.body">A circle expands outward from the centre.</p>
+          </article>
+          <article class="card fx-reveal">
+            <div class="card-icon" aria-hidden="true">⋯</div>
+            <h3 data-i18n="features.c22.title">Reveal</h3>
+            <p data-i18n="features.c22.body">A hidden line slides into view.</p>
+            <span class="card-more" data-i18n="features.c22.more">There it is.</span>
+          </article>
+          <article class="card fx-spacing">
+            <div class="card-icon" aria-hidden="true">⇿</div>
+            <h3 data-i18n="features.c23.title">Letter spacing</h3>
+            <p data-i18n="features.c23.body">The title opens itself up.</p>
+          </article>
+          <article class="card fx-saturate">
+            <div class="card-icon" aria-hidden="true">☀</div>
+            <h3 data-i18n="features.c24.title">Saturate</h3>
+            <p data-i18n="features.c24.body">A muted icon comes back to colour.</p>
+          </article>
+          <article class="card fx-push3d">
+            <div class="card-icon" aria-hidden="true">⬔</div>
+            <h3 data-i18n="features.c25.title">3D push</h3>
+            <p data-i18n="features.c25.body">Tips back into perspective.</p>
+          </article>
+          <article class="card fx-dashed">
+            <div class="card-icon" aria-hidden="true">⌗</div>
+            <h3 data-i18n="features.c26.title">Dashed border</h3>
+            <p data-i18n="features.c26.body">A dashed edge becomes solid.</p>
+          </article>
+          <article class="card fx-edgebar">
+            <div class="card-icon" aria-hidden="true">▍</div>
+            <h3 data-i18n="features.c27.title">Edge bar</h3>
+            <p data-i18n="features.c27.body">A bar grows down the start edge.</p>
+          </article>
+          <article class="card fx-pulse">
+            <div class="card-icon" aria-hidden="true">♥</div>
+            <h3 data-i18n="features.c28.title">Pulse</h3>
+            <p data-i18n="features.c28.body">Breathes in and out while hovered.</p>
+          </article>
+          <article class="card fx-wobble">
+            <div class="card-icon" aria-hidden="true">↭</div>
+            <h3 data-i18n="features.c29.title">Wobble</h3>
+            <p data-i18n="features.c29.body">Shakes briefly, then settles.</p>
+          </article>
+          <article class="card fx-pop">
+            <div class="card-icon" aria-hidden="true">✦</div>
+            <h3 data-i18n="features.c30.title">Pop</h3>
+            <p data-i18n="features.c30.body">Lifts, grows and glows all at once.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-alt" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title" data-i18n="about.heading">About</h2>
+          <p data-i18n="about.body.one">
+            This section exists to give the page some vertical length. The text
+            is filler and does not describe a real product.
+          </p>
+          <p data-i18n="about.body.two">
+            Your language choice is saved in the browser, so the page opens in
+            the same language next time.
+          </p>
+        </div>
+
+        <ul class="stats">
+          <li>
+            <span class="stat-value" data-i18n="about.stat.one.value">2</span>
+            <span class="stat-label" data-i18n="about.stat.one.label">Languages</span>
+          </li>
+          <li>
+            <span class="stat-value" data-i18n="about.stat.two.value">0</span>
+            <span class="stat-label" data-i18n="about.stat.two.label">Dependencies</span>
+          </li>
+          <li>
+            <span class="stat-value" data-i18n="about.stat.three.value">1</span>
+            <span class="stat-label" data-i18n="about.stat.three.label">Page</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container narrow">
+        <h2 class="section-title" data-i18n="contact.heading">Get in touch</h2>
+        <p class="section-sub" data-i18n="contact.subheading">
+          This form is a placeholder and does not send anything.
+        </p>
+
+        <form class="contact-form" novalidate>
+          <div class="field">
+            <label for="name" data-i18n="contact.name.label">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              data-i18n-attr="placeholder:contact.name.placeholder"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="email" data-i18n="contact.email.label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              data-i18n-attr="placeholder:contact.email.placeholder"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          <div class="field">
+            <label for="message" data-i18n="contact.message.label">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              data-i18n-attr="placeholder:contact.message.placeholder"
+              placeholder="Write something here…"
+            ></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit" data-i18n="contact.submit">
+            Send message
+          </button>
+          <p class="form-note" data-i18n="contact.note">
+            Nothing is submitted — this is a demo.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer.text">Placeholder Co — a practice project.</p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
