@@ -32,3 +32,6 @@ Please retry, check that the downloads folder is accessible now and confirm the 
 
 ## 11
 yes please commit
+
+## 12
+please push to github now
