@@ -41,3 +41,9 @@ on mobile, since hover doesn't apply, I want tapping a card to trigger its effec
 
 ## 14
 yes please commit and push
+
+## 15
+I'd like to add a text input box to the page where a user can type text in English or Arabic and get it translated into the other language, for any text they type — not just the fixed phrases already on the page. What's the best way to implement this
+
+## 16
+okay commit and push so i cant test
