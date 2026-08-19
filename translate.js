@@ -21,6 +21,10 @@
   // regex rather than a round-trip to a detection service.
   var ARABIC = /[؀-ۿ]/;
 
+  // "?" is U+003F in English and U+061F in Arabic. An engine that renders
+  // the sentence correctly can still hand back the wrong mark, or none.
+  var TERMINALS = "?\u061F!.";
+
   var DEBOUNCE_MS = 400;
   var FALLBACK_MAX = 500; // MyMemory's free endpoint truncates beyond this
   var FALLBACK_URL = "https://api.mymemory.translated.net/get";
@@ -148,6 +152,47 @@
      Engine 2 — keyless public API
      --------------------------------------------------------------- */
 
+  /**
+   * MyMemory blends machine translation with crowd-sourced memory, and some
+   * of that memory is scraped from subtitles. Those entries arrive wearing
+   * speaker dashes — "- Nice meeting you. - You too." — which is a caption,
+   * not a translation. Strip the dashes and keep the first speaker's line.
+   */
+  function stripSubtitleArtifacts(out) {
+    if (out.slice(0, 2) !== "- ") return out;
+    var cleaned = out.slice(2);
+    var turn = cleaned.indexOf(" - ");
+    if (turn > 0) cleaned = cleaned.slice(0, turn);
+    return cleaned.trim() || out;
+  }
+
+  /**
+   * Carry the sentence's final punctuation across, in the target language's
+   * own form. Engines drop it or leave it in the source script often enough
+   * that it is worth restoring rather than trusting.
+   */
+  function keepTerminal(source, out, to) {
+    var last = source.trim().slice(-1);
+    if (TERMINALS.indexOf(last) === -1) return out;
+
+    var trimmed = out.replace(/\s+$/, "");
+    var end = trimmed.slice(-1);
+
+    // Some engines return the mark at the head of an RTL string. Appending a
+    // second one there would show the sentence punctuated at both ends.
+    if (TERMINALS.indexOf(trimmed.charAt(0)) !== -1) return out;
+
+    // Normalise a question mark that came back in the wrong script.
+    var want = last === "?" || last === "\u061F"
+      ? (to === "ar" ? "\u061F" : "?")
+      : last;
+
+    if (end === want) return out;
+    if (end === "?" || end === "\u061F") return trimmed.slice(0, -1) + want;
+    if (TERMINALS.indexOf(end) !== -1) return out; // a different mark; leave it
+    return trimmed + want;
+  }
+
   function viaFallback(text, from, to) {
     if (text.length > FALLBACK_MAX) {
       return Promise.reject(new Error("too-long"));
@@ -170,7 +215,7 @@
         if (code >= 400) throw new Error("quota");
         var out = data.responseData && data.responseData.translatedText;
         if (!out) throw new Error("empty");
-        return out;
+        return stripSubtitleArtifacts(out);
       });
   }
 
@@ -178,8 +223,8 @@
      Flow
      --------------------------------------------------------------- */
 
-  function render(text, from, to, onDevice) {
-    els.output.value = text;
+  function render(source, text, from, to, onDevice) {
+    els.output.value = keepTerminal(source, text, to);
     els.output.dir = to === "ar" ? "rtl" : "ltr";
     setStatus(
       onDevice ? "tr.status.onDevice" : "tr.status.online",
@@ -202,7 +247,7 @@
         return withTimeout(engine.translate(text), TRANSLATE_TIMEOUT_MS).then(
           function (out) {
             if (out === null) return null; // stalled — let the fallback try
-            if (id === seq) render(out, from, to, true);
+            if (id === seq) render(text, out, from, to, true);
             return true;
           }
         );
@@ -210,7 +255,7 @@
       .then(function (done) {
         if (done || id !== seq) return;
         return viaFallback(text, from, to).then(function (out) {
-          if (id === seq) render(out, from, to, false);
+          if (id === seq) render(text, out, from, to, false);
         });
       })
       .catch(function (err) {

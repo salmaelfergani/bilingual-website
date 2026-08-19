@@ -47,3 +47,9 @@ I'd like to add a text input box to the page where a user can type text in Engli
 
 ## 16
 okay commit and push so i cant test
+
+## 17
+Two things: 1) The question mark is still missing when translating English → Arabic, please confirm the fix is in place and test again with "who are you?" 2) Also noticed the online fallback occasionally makes translation quality mistakes (e.g. "meet you" became "meat you"). Is there anything reasonable to do about that, or is this an inherent limitation of the free fallback service?
+
+## 18
+Please commit and push,  Skip the DeepL setup for now, the current fix is good enough
