@@ -21,3 +21,4 @@ Then visit http://localhost:8000
 | `translations.js` | English and Arabic string tables |
 | `app.js` | Language toggle and DOM text swapping |
 | `prompts-log.md` | Log of the prompts used to build this project |
+
