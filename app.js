@@ -67,8 +67,9 @@
 
     saveLang(lang);
 
-    // Text this module didn't render — the translator's status line — has to
-    // re-render itself, so announce the switch rather than reaching into it.
+    // Text this module didn't render — the reverse tool's direction badge —
+    // has to re-render itself, so announce the switch rather than reaching
+    // into it.
     document.dispatchEvent(
       new CustomEvent("langchange", { detail: { lang: lang } })
     );

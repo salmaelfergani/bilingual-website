@@ -758,27 +758,27 @@ html[dir="rtl"] .fx-underline::after { transform-origin: right; }
 }
 .stat-label { color: var(--text-muted); font-size: 0.92rem; }
 
-/* Translator */
-.translator {
+/* Text reversal */
+.reverser {
   display: grid;
   gap: 10px;
 }
 
-.tr-field { display: grid; gap: 7px; }
+.rev-field { display: grid; gap: 7px; }
 
-.tr-row {
+.rev-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
 }
-.tr-row label {
+.rev-row label {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-muted);
 }
 
-.tr-lang {
+.rev-lang {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent);
@@ -787,54 +787,29 @@ html[dir="rtl"] .fx-underline::after { transform-origin: right; }
   padding: 2px 10px;
   min-height: 1.2em;
 }
-.tr-lang:empty { background: none; padding: 0; }
+.rev-lang:empty { background: none; padding: 0; }
 
-/* The input follows the page; the output follows what was translated, so
-   its dir is set from JS rather than inherited. */
-#tr-input,
-#tr-output {
+/* The box's own dir follows what is being typed; Enter flips it to the
+   opposite script's direction, set from JS once the text is reversed. */
+#rev-input {
   min-height: 92px;
   line-height: 1.6;
 }
-#tr-output {
-  background: var(--bg-alt);
-  color: var(--text);
-}
 
-.tr-arrow {
-  justify-self: center;
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.tr-count {
+.rev-count {
   margin: 0;
   font-size: 0.78rem;
   color: var(--text-muted);
   text-align: end;
   font-variant-numeric: tabular-nums;
 }
-/* "29 / 500" is a number pair, not prose. Without isolation the RTL page
-   reorders it around the slash and it reads back to front. */
-.tr-count span {
+/* A character count is a number, not prose. Without isolation the RTL
+   page would still reorder it against neighbouring punctuation. */
+.rev-count span {
   display: inline-block;
   direction: ltr;
   unicode-bidi: isolate;
 }
-.tr-count.is-over { color: #ffb4a2; }
-
-.tr-status {
-  margin: 0;
-  min-height: 1.3em;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-.tr-status.is-ok   { color: #8fd19e; }
-.tr-status.is-warn { color: #ffb4a2; }
-.tr-status.is-hint { color: var(--text-muted); }
-
-.tr-enable { justify-self: start; }
 
 /* Contact form */
 .contact-form { display: grid; gap: 18px; }

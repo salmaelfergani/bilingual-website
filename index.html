@@ -37,7 +37,7 @@
 
       <nav class="nav" aria-label="Main">
         <a href="#features" data-i18n="nav.features">Features</a>
-        <a href="#translate" data-i18n="nav.translate">Translate</a>
+        <a href="#reverse" data-i18n="nav.reverse">Reverse</a>
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
@@ -75,56 +75,29 @@
     </section>
 
 
-    <!-- Free-text translator -->
-    <section class="section section-alt" id="translate">
+    <!-- Live text reversal -->
+    <section class="section section-alt" id="reverse">
       <div class="container narrow">
-        <h2 class="section-title" data-i18n="tr.heading">Translate anything</h2>
-        <p class="section-sub" data-i18n="tr.sub">
-          Type in English or Arabic — the translation appears below.
+        <h2 class="section-title" data-i18n="rev.heading">Reverse any text</h2>
+        <p class="section-sub" data-i18n="rev.sub">
+          Type in English or Arabic, then press Enter — the box reverses in
+          place and flips direction. Press Enter again to flip it back.
         </p>
 
-        <div class="translator">
-          <div class="tr-field">
-            <div class="tr-row">
-              <label for="tr-input" data-i18n="tr.inputLabel">Your text</label>
-              <span class="tr-lang" id="tr-from"></span>
+        <div class="reverser">
+          <div class="rev-field">
+            <div class="rev-row">
+              <label for="rev-input" data-i18n="rev.inputLabel">Your text</label>
+              <span class="rev-lang" id="rev-dir"></span>
             </div>
             <textarea
-              id="tr-input"
+              id="rev-input"
               rows="3"
-              data-i18n-attr="placeholder:tr.placeholder"
-              placeholder="Type or paste text…"
+              data-i18n-attr="placeholder:rev.placeholder"
+              placeholder="Type or paste text, then press Enter…"
             ></textarea>
-            <p class="tr-count"><span id="tr-count"></span></p>
+            <p class="rev-count"><span id="rev-count"></span></p>
           </div>
-
-          <div class="tr-arrow" aria-hidden="true">↓</div>
-
-          <div class="tr-field">
-            <div class="tr-row">
-              <label for="tr-output" data-i18n="tr.outputLabel">Translation</label>
-              <span class="tr-lang" id="tr-to"></span>
-            </div>
-            <textarea
-              id="tr-output"
-              rows="3"
-              readonly
-              data-i18n-attr="placeholder:tr.outputPlaceholder"
-              placeholder="Translation appears here"
-            ></textarea>
-          </div>
-
-          <button
-            type="button"
-            class="btn btn-ghost tr-enable"
-            id="tr-enable"
-            hidden
-            data-i18n="tr.enable"
-          >
-            Enable on-device translation
-          </button>
-
-          <p class="tr-status" id="tr-status" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -386,6 +359,6 @@
 
   <script src="translations.js"></script>
   <script src="app.js"></script>
-  <script src="translate.js"></script>
+  <script src="reverse.js"></script>
 </body>
 </html>

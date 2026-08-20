@@ -53,3 +53,12 @@ Two things: 1) The question mark is still missing when translating English → A
 
 ## 18
 Please commit and push,  Skip the DeepL setup for now, the current fix is good enough
+
+## 19
+I need to change the translate section. Instead of translating between languages, I want a single text box, when someone types text (English or Arabic), it displays that same text with the character order reversed, literally backwards, like "hello" becoming "olleh." Additionally, when the text is reversed, the box's text direction should flip too, so reversed English should start displaying from the right side (like RTL), and reversed Arabic should start displaying from the left side (like LTR). Please replace the current translator feature with this
+
+## 20
+actually I want a single text box, not two. the user types their text, and when they press enter, the box updates in place to show the reversed version of what they typed (same direction-flip behavior as before), no separate output box needed
+
+## 21
+commit and push please
